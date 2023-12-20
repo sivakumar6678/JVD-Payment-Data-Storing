@@ -1,0 +1,39 @@
+/* Navbar brand styles */
+.navbar-brand {
+    font-size: 2.5em; /* Font size for the navbar brand */
+    font-family: 'Times New Roman', Times, serif; /* Font family for the navbar brand */
+    font-weight: bold; /* Set the font weight to bold */
+    color: rgb(6, 6, 6); /* Text color for the navbar brand */
+}
+
+/* Navbar right alignment */
+.navbar-right {
+    margin: 0.3em; /* Margin for the navbar right alignment */
+}
+
+/* Button styles */
+.btn {
+    border-radius: 1.1rem; /* Border radius for buttons */
+    font-size: 1.4em; /* Font size for buttons */
+    transition: background-color 0.3s ease-out, color 0.3s ease-out; /* Transition effect */
+}
+
+/* Container styles */
+.container {
+    margin-top: 10px; /* Top margin for containers */
+}
+
+/* Navbar default styles */
+.navbar-default {
+    background-color: #007bff; /* Background color for the navbar */
+    border-color: #007bff; /* Border color for the navbar */
+    border-radius: 5px; /* Round the corners of the navbar */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow to the navbar */
+    padding: 10px; /* Padding for the navbar */
+}
+
+/* Navbar brand text styles */
+.navbar-default .navbar-brand {
+    color: white; /* Text color for the navbar brand */
+    font-weight: bold; /* Set the font weight to bold for the navbar brand */
+}

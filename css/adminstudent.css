@@ -1,0 +1,73 @@
+/* Body styles */
+body {
+    background-color: #f8f9fa; /* Background color for the body */
+}
+
+/* Container styles */
+.container {
+    margin-top: 50px; /* Top margin for container */
+}
+
+/* Heading styles */
+h2 {
+    text-align: center; /* Center alignment for headings */
+    margin-bottom: 30px; /* Bottom margin for headings */
+}
+
+/* Form styles */
+form {
+    max-width: 400px; /* Maximum width for the form */
+    margin: auto; /* Centering the form */
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 20px; /* Margin bottom for form groups */
+}
+
+/* Data container styles */
+.data-container {
+    margin-top: 20px; /* Top margin for data container */
+    padding: 20px; /* Padding for data container */
+    border: 1px solid #ddd; /* Border for data container */
+    background-color: #fff; /* Background color for data container */
+    border: none; /* Removing border */
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); /* Box shadow for data container */
+}
+
+/* Table styles */
+.data-table {
+    width: 100%; /* Full width for the table */
+    border-collapse: collapse; /* Collapsing table borders */
+    margin-top: 10px; /* Top margin for the table */
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #ddd; /* Border for table cells */
+    padding: 8px; /* Padding for table cells */
+    text-align: left; /* Left alignment for table cells */
+}
+
+.data-table th {
+    background-color: #f2f2f2; /* Background color for table headers */
+}
+
+/* Edit form styles */
+.edit-form {
+    display: none; /* Initially hide the edit form */
+    margin-top: 20px; /* Top margin for edit form */
+    padding: 20px; /* Padding for edit form */
+    border: 1px solid #ddd; /* Border for edit form */
+    background-color: #fff; /* Background color for edit form */
+}
+
+.edit-button {
+    margin-top: 20px; /* Top margin for edit button */
+}
+/* Button styles (commented out) */
+/* .btn {
+    border-radius: 0.81rem;
+    font-size: 18px;
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+} */

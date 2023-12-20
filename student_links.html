@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+       <!-- Latest compiled and minified CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+       <!-- jQuery library -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   
+       <!-- Latest compiled JavaScript -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+       <style>
+           /* Global reset for box-sizing */
+            * {
+                box-sizing: border-box;
+            }
+            
+            .container>.col{
+                width: 100%;
+            }
+            /* Header styles */
+            .container > .col > h2 {
+                font-size: xx-large;
+                background-color: rgba(0, 0, 255, 0.932);
+                border-radius: 2rem;
+                color:white;
+                font-weight: bold;
+            }
+
+            .container > .row > .col > h2 {
+                font-size: x-large;
+                font-weight: bold;
+                margin: 0 0 -10% 0;
+            }
+
+            /* List group styles */
+            .list-group > a {
+                color: black;
+                /* border: none; */
+                background-color: rgba(218, 206, 206, 0);
+                /* box-shadow:  0 0 0.1em  rgb(43, 39, 39) ; */
+                
+                }
+              /* Container style */
+            .studentpay {
+            /* display: flex; */
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            margin: 2em 2em 5em 2em;
+            font-size: 1.5em; /* Adjust font size as needed */
+            text-align: center;
+            background-color: rgb(190, 182, 182);
+            color: black;
+            box-shadow: 0 0 10px 1px rgb(158, 156, 156), 0 0 1em 2px rgb(121, 118, 118) inset;
+            /* padding: 20px; Added padding for better spacing */
+            }
+
+            
+
+            /* Anchor (link) style */
+            .list-group > a {
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: x-large;
+            padding: 10px 20px;
+            border-radius: 18px;
+            /* background-color: rgb(158, 156, 156); */
+            color: black;
+            transition: all 0.3s ease;
+            position: relative;
+            }
+
+            /* Hover effect */
+            .list-group > a:hover {
+                color:black;
+                font-weight: bold;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgb(114, 114, 114);
+            }
+
+            /* Animation effect */
+            .list-group > a::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(158, 155, 155, 0.096);
+            border-radius: 8px;
+            z-index: -1;
+            transition: all 0.3s ease;
+            opacity: 0;
+            }
+
+            .list-group > a:hover::after {
+            opacity: 1;
+            transform: scale(1.1);
+            }
+
+            /* .studentpay{
+                flex-wrap: wrap;
+                border-radius: 15px;
+                margin:2em 0 5em 0;
+                font-size: x-large;
+                text-align: center;
+                background-color: rgb(190, 182, 182);
+                color: black;
+                box-shadow: 0 0 10px 1px rgb(158, 156, 156), 0 0 1em 2px rgb(121, 118, 118) inset;
+
+            }
+            .container>.list-group{
+                border-radius: 10px;
+                margin:15px 1px;
+            }
+
+            .list-group > a:hover {
+                background-color: rgba(182, 182, 182, 0.56);
+                color: black;
+                font-weight: bold;
+                
+                display: inline-block;
+                animation: all .3s ease-out;
+                
+            }
+             */
+       </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col text-center">
+            <h2 class=" well">Student Portal</h2>
+        </div>
+        
+        <div class="row">
+            <div class="col text-center">
+                <h2>Student Details</h2>
+            </div>
+        </div>
+    </div>
+    <div id="phpContent"></div>
+    <div class="container studentpay">
+        <div class="list-group">
+            <a  href="./php/history_student.php" class="list-group-item list-group-item-action"><i class"glyphicon glyphicon-share-alt">&nbsp;</i>Payment History</a><br>
+            
+            <!-- <a href="student_info.php" class="list-group-item list-group-item-action">Due Amount</a> -->
+        </div>
+    </div>
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    url: './php/student_info.php',
+                    type: 'GET',
+                    dataType: 'html',
+                    success: function (data) {
+                        $('#phpContent').html(data);
+                    },
+                    error: function () {
+                        $('#phpContent').html('<p>Error loading content.</p>');
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Upload</title>
+
+    <!-- Bootstrap 3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap 3 JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Your custom CSS file -->
+    <link rel="stylesheet" href="./css/filehtml.css">
+    <link rel="stylesheet" href="./css/navbarstyle.css">
+
+    <style>
+        /* Any additional styles */
+    </style>
+<script>
+    window.onload = function() {
+        function showMessage(param, bgColor) {
+            var message = getParameterByName(param);
+            if (message) {
+                var errorElement = document.getElementById('success');
+                errorElement.innerText = message;
+                errorElement.style.color = 'white';
+                errorElement.style.fontSize = '20px';
+                errorElement.style.backgroundColor = bgColor;
+                errorElement.style.margin = '10px';
+                errorElement.style.padding = '0.1em 1em 0.1em 1em';
+                errorElement.style.height = '20px'; // Adjust the height as needed
+                errorElement.style.width = '100px'; // Adjust the width as needed
+                errorElement.style.boxShadow = '0.1em 0.1em 0.2em 0.2em rgba(0, 0, 0, 1)'; // Adjust shadow values as needed
+                errorElement.style.transition = 'height 0.3s linear, opacity 0.';
+                setTimeout(function() {
+                    errorElement.style.height = '0';
+                    errorElement.style.opacity = '0';
+                    setTimeout(function() {
+                        errorElement.style.display = 'none';
+                    }, 500)
+                }, 1500);
+            }
+        }
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        showMessage('success_message', 'green');
+        showMessage('errormsg', 'red');
+        showMessage('privio', 'red');
+    }
+</script>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Admin Panel</a>
+                </div>
+                <div class="navbar-right">
+                    <a href="./php/logout.php" class="btn btn-danger navbar-btn">Logout</a>
+                </div>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 col-xs-12 text-center">
+                <h4 id="chagecolor"> <span id="success"> </span></h4>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-4 col-xs-12">  
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <img src="images/upload.png" style="width:47.50%; height:100%;" alt="">
+                            </div>
+                            <div class="row">
+                                <h2 class="card-title   ">Upload CSV File</h2>
+                            </div>
+                            <div class="row">
+                                <form action="./php/upload.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                                    <div class="form-group">
+                                        <label for="file" class="custom-file-upload">Choose a CSV file</label>
+                                        <input type="file" name="file" id="file" accept=".csv" required onchange="displayFileName()">
+                                        <div class="help-block">Please choose a CSV file.</div>
+                                    </div>
+                                    <div id="file-label"></div>
+                                    <button type="submit" name="submit" class="btn btn-primary">Upload</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" id="studentimg">
+                            <div class="row text-center"><img  src="images/studnt.png" alt=""></div>
+                        </div>
+                        <div class="row">
+                            <h2 class="card-title">Upload Single Student Data</h2>
+                        </div>
+                        <div class="row">
+                                <div class="form-group">
+                                    <div class="help-block">Please click Register to register a student.</div>
+                                </div>
+                                <button data-toggle="modal" data-target="#myModal3" type="submit" name="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" id="studentimg">
+                            <div class="row text-center"><img  style=" width: 90%;" src="images/fees.jpg" alt=""></div>
+                        </div>
+                        <div class="row">
+                            <h2 class="card-title">Upload Fees Structure</h2>
+                        </div>
+                        <div class="row">
+                                <div class="form-group">
+                                    <div class="help-block">Please click upload the fees structure.</div>
+                                </div>
+                                <button data-toggle="modal" data-target="#feesModal" type="submit" name="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+        <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title text-center">Student Login</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <form action="./php/registered.php" method="post">
+                            <div class="row">
+                                <div class="col-lg-12 forum">
+                                    <div class="row">
+                                        <div class="col">
+                                            <section class="form-group">
+                                                <label id="ad" for="admissionNumber">Admission Number:</label>
+                                                <input type="text" name="admissionNumber" id="admissionNumber" class="form-control"
+                                                    required>
+                                            </section>
+                                            <section><label for="scholorshipid">Scholorship Id:</label>
+                                                <input type="text" name="scholorshipid" id="scholorshipid" class="form-control">
+                                            </section>
+                                            <section class="form-group">
+                                                <label id="ad" for="name">Name:</label>
+                                                <input type="text" name="name" id="name" class="form-control" required>
+                                            </section>
+                                            <section class="form-group">
+                                                <label id="ad" name="jvd" for="jvd">Jvd/Non-Jvd:</label>
+                                                <label for="" class="radio-inline"><input type="radio" name="jvd" id="jvdYes" value="yes" required>Jvd</label>
+                                                <label for="" class="radio-inline"><input type="radio" name="jvd" id="jvdNo" value="no" required>Non-Jvd</label> <br>
+                                            </section>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <label for="email" id="email">Email</label>
+                                            <input type="email" class="form-control" name="email" id="email">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col form-group">
+                                            <label id="ad" for="year">Year:</label>
+                                            <select name="year" id="year" class="form-control form-group" required>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                            <label id="ad" for="branch">Branch:</label>
+                                            <select name="branch" id="branch" class="form-control form-group" required>
+                                                <option value="CSE">CSE</option>
+                                                <option value="ECE">ECE</option>
+                                                <option value="EEE">EEE</option>
+                                                <option value="FDT">FDT</option>
+                                                <option value="MECH">MECH</option>
+                                                <option value="CIVIL">CIVIL</option>
+                                            </select>
+                                            <section class="form-group">
+                                                <label for="Qualify" id="ad">Cet Qualified</label>
+                                                <select name="Qualify" id="quali" class="form-control form-group" required>
+                                                    <option value="EAPCET">EAPCET</option>
+                                                    <option value="ECET">ECET</option>
+                                                </select>
+                                            </section>
+                                            <section class="form-group">
+                                                <label id="ad" for="phoneNumber">Phone Number:</label>
+                                                <input type="tel" name="phoneNumber" id="phoneNumber" class="form-control" required>
+                                            </section>
+                                            <section class="form-group">
+                                                <label id="ad" for="phoneNumber">Acomidation:</label>
+                                                <select name="acomidation" id="quali" class="form-control form-group" required>
+                                                    <option value="Hosteler">Hostle</option>
+                                                    <option value="Day Scholar">Day Scholar</option>
+                                                </select>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" name="register" class="btn btn-success form-control" value="Register">
+                        </form>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>    
+        <div class="modal fade" id="feesModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Fees Structure</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./php/process_fees.php" method="post">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="yearSelection">Select Year:</label>
+                                    <select id="yearSelection" name="yearSelection" class="form-control">
+                                        <option value="1"> 1 </option>
+                                        <option value="2"> 2 </option>
+                                        <option value="3"> 3 </option>
+                                        <option value="4"> 4 </option>
+                                    </select>
+                                    <div id="yearFees">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="AdmissionFee">Admission Fee:</label>
+                                                            <input type="number" name="AdmissionFee" id="AdmissionFee" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="TuitionFee">Tuition Fee:</label>
+                                                            <input type="number" name="TuitionFee" id="TuitionFee" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="SpecialFee">Special Fee:</label>
+                                                            <input type="number" name="SpecialFee" id="SpecialFee" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="UCSFees">UCS Fees:</label>
+                                                            <input type="number" name="UCSFees" id="1UCSFees" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" name="submitFees" class="btn btn-success form-control" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    <!-- Your Bootstrap 3 JavaScript and Custom Scripts -->
+    <script>
+        // Enable Bootstrap form validation
+        document.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].addEventListener('submit', function (event) {
+                    if (this.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    this.classList.add('was-validated');
+                }, false);
+            }
+        }, false);
+        // Display selected file name
+        function displayFileName() {
+            var input = document.getElementById('file');
+            var label = document.getElementById('file-label');
+            label.innerHTML = input.files[0] ? 'Selected file: ' + input.files[0].name : '';
+        }
+    </script>
+</body>
+</html>

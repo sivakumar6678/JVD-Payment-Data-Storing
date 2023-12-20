@@ -1,0 +1,15 @@
+{
+    "name": "sivakumar/csk",
+    "description": "Project",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sivakumar\\Csk\\": "src/"
+        }
+    },
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.17"
+        
+    }
+}

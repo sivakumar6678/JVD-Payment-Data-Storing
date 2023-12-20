@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Management</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/adminlinks.css">
+    <link rel="stylesheet" href="./css/navbarstyle.css">
+
+ <script>
+    window.onload = function() {
+    function showMessage(param, bgColor) {
+        var errorMessage = getParameterByName(param);
+        if (errorMessage) {
+            var errorElement = document.getElementById('success');
+            errorElement.innerText = errorMessage;
+            errorElement.style.color = 'white';
+            errorElement.style.fontSize = '20px';
+            errorElement.style.backgroundColor = bgColor;
+            errorElement.style.margin = '10px';
+            errorElement.style.padding = '0.1em 1em 0.1em 1em';
+            errorElement.style.height = '32px'; // Adjust the height as needed
+            errorElement.style.width = '100px'; // Adjust the width as needed
+            errorElement.style.boxShadow = '0.1em 0.1em 0.2em 0.2em rgba(0, 0, 0, 1)'; // Adjust shadow values as needed
+            errorElement.style.transition = 'height 0.3s linear, opacity 0.';
+            setTimeout(function() {
+                errorElement.style.height = '0';
+                errorElement.style.opacity = '0';
+                setTimeout(function() {
+                    errorElement.style.display = 'none';
+                }, 500)
+            }, 2500);
+        }
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    showMessage('msg', 'green');
+}
+
+ </script>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Admin Panel</a>
+            </div>
+            <div class="navbar-right">
+                <a href="./php/logout.php" class="btn btn-danger navbar-btn">Logout</a>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"><span id="success"></span></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <img src="images/upload.png" alt="">
+                    </div>
+                    <div class="row">
+                        <h5 class="card-title">Upload  Details</h5>
+                        <p class="card-text">Click to upload student details.</p>
+                    </div>
+                    <div class="row">
+                        <a href="./file.html" class="btn btn-primary btn-block">Upload</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <img src="images/information-sign-512x512-1214334.png" alt="">
+                    </div>
+                    <div class="row">
+                        <h5 class="card-title">Student Info</h5>
+                        <p class="card-text">Get information about a specific student.</p>
+                    </div>
+                    <div class="row">
+                        <a href="./php/admin_student.php" class="btn btn-primary btn-block">Get Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <img src="images/view.png" alt="">                    
+                    </div>
+                    <div class="row">
+                        <h5 class="card-title">View Data</h5>
+                        <p class="card-text">View and manage student data.</p>
+                    </div>
+                    <div class="row">
+                        <a href="./excel/" class="btn btn-primary btn-block">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <img src="images/updatepayment.png" alt="">
+                    </div>
+                    <div class="row">
+                        <h5 class="card-title">Update  Payment</h5>
+                        <p class="card-text">Update payment details of student</p>
+                    </div>
+                    <div class="row">
+                        <button data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-block">Update </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <img src="images/history.png" alt="">
+                    </div>
+                    <div class="row">
+                        <h5 class="card-title">Check History</h5>
+                        <p class="card-text">Payment Details of a particular Student</p>
+                    </div>
+                    <div class="row">
+                        <a href="./php/history.php" class="btn btn-primary btn-block">Check</a> 
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col">
+            <div class="card">
+                <div class="card-body text-center">
+                    <div class="row">
+                        <img src="images/history.png" alt="">
+                    </div>
+                    <div class="row">
+                        <h5 class="card-title">Add Admin</h5>
+                        <p class="card-text">Adding new Admin</p>
+                    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+                    <div class="row">
+                        <button data-toggle="modal" data-target="#myModal2" class="btn btn-primary btn-block">Update </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title text-center">Payment Form</h2>
+            </div>
+            <div class="modal-body">
+                <form action="./php/process_payment.php" method="post" class=" form-group">
+                    <!-- Your form fields go here -->
+                    <label for="admission_number">Admission Number:</label>
+                    <input class="form-control" type="text" name="admission_number" required><br>
+    
+                    <label for="name">Name:</label>
+                    <input class="form-control" type="text" name="name" required><br>
+    
+                    <label for="amount_paid">Amount Paid:</label>
+                    <input class="form-control" type="text" name="amount_paid" required><br>
+    
+                    <label for="utr_number">UTR Number:</label>
+                    <input class="form-control" type="text" pattern="\d{12}" title="Please enter 12 digits." minlength="12" maxlength="12" name="utr_number" required><br>
+                    
+
+                    <label for="fees_type"> Select Fees Type:</label>
+                    <select name="fees_type" id="fees_type" class="form-control form-group" required>
+                        <option class="form-control" value="Admission_Fees">Admission Fees </option>
+                        <option class="form-control" value="Tution_Fees">Tution Fees</option>
+                        <option class="form-control" value="Special_Fees">Special Fees</option>
+                        <option class="form-control" value="UCS_Fees">UCS Fees</option>
+                    </select>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <button class="btn btn-success btn-block" type="submit" >Submit</button>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </form>
+            </div>
+            
+          </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title text-center">Admin Registration</h2>
+            </div>
+            <div class="modal-body">
+                <form action="./php/add_admin.php" method="post" class=" form-group">
+                    <!-- Your form fields go here -->
+                    <label for="username">Username</label>
+                    <input class="form-control" type="text" name="username" required><br>
+    
+                    <label for="password">Password:</label>
+                    <input class="form-control" type="text" name="password" required><br>
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <button class="btn btn-success btn-block" type="submit" >Submit</button>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (Optional) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

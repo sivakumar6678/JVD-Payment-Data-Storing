@@ -1,0 +1,170 @@
+/* Body styles */
+body {
+    background-color: #f8f9fa; /* Background color for the body */
+    font-family: 'Arial', sans-serif; /* Font family for the body */
+}
+
+/* Container styles */
+.container {
+    margin-top: 10px; /* Top margin for the container */
+}
+
+/* Heading styles */
+h2 {
+    text-align: center; /* Center alignment for headings */
+    margin-bottom: 30px; /* Bottom margin for headings */
+    color: #007bff; /* Text color for headings */
+}
+
+/* Upload and Student container styles */
+.upload-container,
+.student-container {
+    background-color: #fff; /* Background color for upload and student containers */
+    padding: 20px; /* Padding for containers */
+    border-radius: 8px; /* Border radius for containers */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for containers */
+    margin-bottom: 20px; /* Bottom margin for containers */
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 20px; /* Margin bottom for form groups */
+}
+
+/* Label styles */
+label {
+    display: block; /* Display labels as block elements */
+    margin-bottom: 10px; /* Margin bottom for labels */
+    color: #343a40; /* Text color for labels */
+}
+
+/* Input file styles */
+input[type="file"] {
+    display: none; /* Hide input file element */
+}
+
+/* Custom file upload styles */
+.custom-file-upload {
+    border: 1px solid #007bff; /* Border for custom file upload */
+    color: #007bff; /* Text color for custom file upload */
+    display: inline-block; /* Display as inline-block element */
+    padding: 6px 12px; /* Padding for custom file upload */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.custom-file-upload:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+}
+
+/* File label styles */
+#file-label {
+    margin-top: 10px; /* Top margin for file label */
+    font-size: 14px; /* Font size for file label */
+    color: #007bff; /* Text color for file label */
+}
+
+/* Button styles for submit */
+button[type="submit"] {
+    display: block; /* Display as block element */
+    width: 100%; /* Full width for button */
+    padding: 10px; /* Padding for button */
+    background-color: #007bff; /* Background color for button */
+    color: #fff; /* Text color for button */
+    border: none; /* No border */
+    border-radius: 4px; /* Border radius for button */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Background color on hover */
+}
+
+/* Edit button styles */
+button {
+    margin: 0 1em 0 0; /* Margin for buttons */
+}
+
+/* Additional styling for the student form */
+.btn-upload-student {
+    background-color: #28a745; /* Background color for student upload button */
+    color: #fff; /* Text color for student upload button */
+    border: none; /* No border */
+    border-radius: 4px; /* Border radius for student upload button */
+    padding: 10px; /* Padding for student upload button */
+    cursor: pointer; /* Set cursor to pointer */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.btn-upload-student:hover {
+    background-color: #218838; /* Background color on hover */
+}
+
+/* Button general styles */
+.btn {
+    margin: 0.4em; /* Margin for buttons */
+    border-radius: 1.1rem; /* Border radius for buttons */
+    font-size: 1.4em; /* Font size for buttons */
+    transition: background-color 0.3s ease-out, color 0.3s ease-out; /* Transition effect */
+}
+
+/* Modal content styles */
+.modal-content {
+    background-color: #fefefe; /* Background color for modal content */
+    margin: 5% auto; /* Margin for modal content */
+    padding: 20px; /* Padding for modal content */
+    border: 1px solid #888; /* Border for modal content */
+    width: 80%; /* Width for modal content */
+    border-radius: 8px; /* Border radius for modal content */
+}
+
+/* Close button styles */
+.close {
+    color: #aaa; /* Text color for close button */
+    float: right; /* Float the close button to the right */
+    font-size: 28px; /* Font size for close button */
+    font-weight: bold; /* Bold text for close button */
+    cursor: pointer; /* Set cursor to pointer */
+}
+
+/* Card styles */
+.card {
+    padding: 0.5em; /* Padding for cards */
+    margin-bottom: 20px; /* Bottom margin for cards */
+    border: 0.1rem solid wheat; /* Border for cards */
+    overflow: hidden; /* Overflow handling for cards */
+    position: relative; /* Positioning for cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for cards */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Transition effects */
+    border-radius: 2em; /* Border radius for cards */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Hover effect to lift the card */
+    box-shadow: 0 12px 24px rgba(230, 0, 0, 0.2); /* Box shadow on hover */
+}
+
+/* Card title styles */
+.card-title {
+    font-size: 24px; /* Font size for card titles */
+    margin-bottom: 10px; /* Bottom margin for card titles */
+}
+
+/* Card text styles */
+.card-text {
+    font-size: 18px; /* Font size for card text */
+}
+
+/* Card body styles */
+.card-body {
+    padding: 20px; /* Padding for card body */
+}
+
+/* Navbar default styles */
+.navbar-default {
+    background-color: #007bff; /* Background color for navbar */
+    border-color: #007bff; /* Border color for navbar */
+    border-radius: 5
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/homestyle.css">
+
+    <!-- JavaScript for displaying error message -->
+    <script>
+        window.onload = function() {
+    // Function to get query parameters from URL
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Get the error message from URL and display it
+    var errorMessage = getParameterByName('error_message');
+    if (errorMessage) {
+        var errorElement = document.getElementById('error');
+        errorElement.innerText = errorMessage;
+        errorElement.style.color = 'white';
+        errorElement.style.fontSize = '20px';
+        errorElement.style.backgroundColor = 'rgba(255, 0, 0, 0.800)';
+        errorElement.style.margin = '10px';
+        errorElement.style.padding = '0.1em 1em 0.1em 1em';
+        errorElement.style.height = '20px'; // Adjust the height as needed
+        errorElement.style.width = '100px'; // Adjust the width as needed
+        errorElement.style.boxShadow = '0.1em 0.1em 0.2em 0.2em rgba(0, 0, 0, 1)'; // Adjust shadow values as needed
+
+        // Add transition
+        errorElement.style.transition = 'height 0.5s, opacity 0.5s';
+
+        // Set timeout to collapse the error message after 5 seconds
+        setTimeout(function() {
+            errorElement.style.height = '0';
+            errorElement.style.opacity = '0';
+            setTimeout(function() {
+                errorElement.style.display = 'none';
+            }, 500); // Hide the element after transition
+        }, 2000); // 5 seconds timeout
+    }
+}
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="container-fluid">
+                    <!-- Bootstrap Navbar -->
+        <nav class="navbar">
+            <div class="container-fluid" >
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                <a class="navbar-brand" href="#"> <span id="brnd"> JNTUACEK</span> </a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li data-toggle="modal" data-target="#myModal"><a href="#"><span class="glyphicon glyphicon-user"></span>  Student Login</a></li>
+                    <li data-toggle="modal" data-target="#myModal2"><a href="#"><span class="glyphicon glyphicon-briefcase"></span>  Admin Login</a></li>
+                  </ul>
+              </div>              
+            </div>
+          </nav>
+    </div>
+        <!-- Modals for Student and Admin Login --> 
+        <div class="container-fluid">
+            <!-- Student Login Modal -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <!-- Modal for Student Login -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <!-- Close button for the modal -->
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <!-- Title for the student login modal -->
+                                    <h4 class="modal-title text-center">Student Login</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form for student login -->
+                                    <form action="./php/student_login.php" method="post" id="mystudlogin">
+                                        <!-- Input fields for admission number and phone number -->
+                                        <div class="row form-group">
+                                            <!-- Label and input for Admission Number -->
+                                            <div class="col-lg-1"></div>
+                                            <div class="col-lg-2 text-right">
+                                                <label for="admissionNumber">Admission No:</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <!-- Input field for Admission Number -->
+                                                <input class="form-control" type="text" id="admissionNumber" name="admissionNumber" placeholder="Enter Admission No" required>
+                                            </div>
+                                            <div class="col-lg-1"></div>
+                                        </div>
+                                        <!-- Input fields for Phone Number -->
+                                        <div class="row form-group">
+                                            <div class="col-lg-1"></div>
+                                            <div class="col-lg-2 text-right">
+                                                <label for="phoneNumber">Phone No :</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <!-- Input field for Phone Number -->
+                                                <input class="form-control" id="phoneNumber" type="text" name="phoneNumber" placeholder="Enter Phone No" required>
+                                            </div>
+                                            <div class="col-lg-1"></div>
+                                        </div>
+                                        <!-- Button to submit the student login form -->
+                                        <div class="row">
+                                            <div class="col-lg-4"></div>
+                                            <div class="col-lg-4">
+                                                <!-- Login button for student -->
+                                                <button type="submit" class="btn btn-success btn-block">Login</button>
+                                            </div>
+                                            <div class="col-lg-4"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Admin Login Modal -->
+            <div class="row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-4">
+                    <!-- Modal for Admin Login -->
+                    <div class="modal fade" id="myModal2" role="dialog">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <!-- Close button for the modal -->
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <!-- Title for the admin login modal -->
+                                    <h4 class="modal-title text-center">Admin Login</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- Form for admin login -->
+                                    <form action="./php/admin_log.php" method="post">
+                                        <!-- Input fields for username and password -->
+                                        <div class="row">
+                                            <!-- Label and input for Username -->
+                                            <div class="col-lg-1"></div>
+                                            <div class="col-lg-2 text-right">
+                                                <label for="username">User id:</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <!-- Input field for Username -->
+                                                <input class="form-control" type="text" name="username" placeholder="Enter Login Id" required>
+                                            </div>
+                                            <div class="col-lg-1"></div>
+                                        </div>
+                                        <!-- Input fields for Password -->
+                                        <div class="row">
+                                            <div class="col-lg-1"></div>
+                                            <div class="col-lg-2 text-right">
+                                                <label for="password">Password :</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <!-- Input field for Password -->
+                                                <input class="form-control" type="password" name="password" placeholder="Enter Password" required>
+                                            </div>
+                                            <div class="col-lg-1"></div>
+                                        </div>
+                                        <!-- Button to submit the admin login form -->
+                                        <div class="row">
+                                            <div class="col-lg-4"></div>
+                                            <div class="col-lg-4">
+                                                <!-- Login button for admin -->
+                                                <button type="submit" class="btn btn-success btn-block">Login</button>
+                                            </div>
+                                            <div class="col-lg-4"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- Background container -->
+    <div class="background">
+        <!-- Row for content -->
+        <div class="row">
+            <!-- Column alignment -->
+            <div class="col text-center">
+                <!-- Header with dynamic ID for color change -->
+                <h4 id="chagecolor">
+                    <!-- Empty span for potential error message -->
+                    <span id="error"> </span>
+                </h4>
+            </div>
+        </div>
+        <!-- Fluid container for main content -->
+        <div class="container-fluid back">
+            <!-- Column layout -->
+            <div class="col-lg-9 text">
+                <!-- Paragraph containing welcome message -->
+                <p>
+                    "Welcome to our college's convenient and secure payment portal. Easily manage tuition fees, housing expenses, and more with our user-friendly platform. Simplify your transactions, view detailed billing statements, and ensure hassle-free payments, allowing you to focus on your academic journey. Experience seamless financial interactions and reliable support, making your college experience smoother. Join us in paving the way for effortless payments and streamlined financial management."
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
