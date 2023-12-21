@@ -27,6 +27,7 @@ if (isset($_FILES['file'])) {
             // Loop through each row of the CSV file
             while (($row = fgetcsv($fileHandle)) !== FALSE) {
                 // Prepare data for insertion into the database
+                try {
                 $data = [];
                 $data[] = $row[0]; // Admission_Number
                 $data[] = $row[1]; // Name
@@ -39,9 +40,8 @@ if (isset($_FILES['file'])) {
                 $data[] = $row[8]; // Cet_Qualified
                 $data[] = (int) $row[9]; // Cet_Qualified
 
-                try {
                     // Construct SQL query to insert data into the database
-                    $sql = "INSERT INTO studentdetails (Admission_Number, Name, Year, Branch, `Jvd/Non_Jvd`, Accommodation, Phone_Number, Email_Id, CET_Qualified, `Scholorship_Id`) VALUES ('" . implode("', '", $data) . "')";
+                    $sql = "INSERT INTO studentdetails (Admission_Number, Name, Year, Branch, `Jvd/Non_Jvd`, Accommodation, Phone_Number, Email_Id, CET_Qualified, Scholorship_Id) VALUES ('" . implode("', '", $data) . "')";
 
                     // Execute the SQL query
                     if ($conn->query($sql) === TRUE) {

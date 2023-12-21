@@ -82,12 +82,7 @@ img {
     height: 20%; /* Height of glyphicons */
 }
 
-/* Container styles */
-.container {
-    backdrop-filter: blur(10px); /* Apply blur effect to the container */
-    background-color: rgba(255, 255, 255, 0.5); /* Adjust opacity of container background */
-    border-radius: 10px; /* Border radius for the container */
-}
+
 
 /* Body styles */
 body {
