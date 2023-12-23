@@ -36,6 +36,7 @@ echo "<th>Branch</th>";
 echo "<th>Jvd/Non Jvd</th>";
 echo "<th>Phone Number</th>";
 echo "<th>CET Qualified</th>";
+echo "<th>Admission Fees</th>";
 echo "<th>Tuition Fee</th>";
 echo "<th>Special Fee</th>";
 echo "<th>UCS Fee</th>";
@@ -58,6 +59,7 @@ foreach ($rows as $row) {
     echo "<td>{$row['Jvd/Non_Jvd']}</td>";
     echo "<td>{$row['Phone_Number']}</td>";
     echo "<td>{$row['CET_Qualified']}</td>";
+    echo "<td>{$row['Admission_Fees']}</td>";
     echo "<td>{$row['Tution_fee']}</td>";
     echo "<td>{$row['Special_fee']}</td>";
     echo "<td>{$row['UCS_fee']}</td>";
@@ -71,7 +73,7 @@ foreach ($rows as $row) {
 
 // Displaying the total due amount row
 echo "<tr style=\"font-size: 2em;\">";
-echo "<td colspan='11' >Total Due Amount:</td>";
+echo "<td colspan='12' >Total Due Amount:</td>";
 echo "<td>{$totalDueAmount}</td>";
 echo "</tr>";
 
