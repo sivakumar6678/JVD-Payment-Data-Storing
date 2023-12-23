@@ -98,6 +98,7 @@
                     echo '<th>Name</th>';
                     echo '<th>Fees Type</th>';
                     echo '<th>Amount Paid</th>';
+                    echo '<th>Date Of Payment</th>';
                     echo '<th>UTR Number</th>';
                     // Add more columns as needed
                     echo '</tr>';
@@ -112,6 +113,7 @@
                         echo '<td>' . $row['Name'] . '</td>';
                         echo '<td>' . $row['Fees_Type'] . '</td>';
                         echo '<td>' . $row['Amount_paid'] . '</td>';
+                        echo '<td>' . $row['Date_of_payment'] . '</td>';
                         echo '<td>' . $row['UTR_Number'] . '</td>';
                         echo '</tr>';
                     }

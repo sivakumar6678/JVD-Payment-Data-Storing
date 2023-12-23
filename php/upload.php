@@ -1,7 +1,6 @@
 <?php
 // Set up error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
 
 // Database connection parameters
 require 'config.php';

@@ -98,76 +98,103 @@
         <!-- Heading 2 -->
         <h2>Get and Display Student Data</h2>
 
-        <!-- Form to get admission number -->
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="needs-validation" novalidate>
-            <div class="form-group">
-                <label for="admissionNumber">Admission Number:</label>
-                <input name="admissionNumber" type="text" class="form-control" id="admissionNumber" placeholder="Enter Admission Number" required>
-                <div class="invalid-feedback">
-                    Please enter the admission number.
-                </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <form method="post" action="" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <label for="admissionNumber">Admission Number:</label>
+                        <input name="admissionNumber" type="text" class="form-control" id="admissionNumber" placeholder="Enter Admission Number" required>
+                        <div class="invalid-feedback">
+                            Please enter the admission number.
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Get History</button>
+                </form> 
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Get History</button>
-        </form>
+            <div class="col-lg-6">
+                <h4></h4>
+                <label for="date">Get Details by Date:</label>
+                <form method="post" action="" class="needs-validation" novalidate>
+                    <div class="form-group">
+                        <input name="date" type="date" class="form-control" id="date"  required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Get History</button>
+                </form>                
+
+
+            </div>
+        </div>
+
+        <!-- Form to get admission number -->
+
     </div>
 
     <!-- Display data below the container -->
     <div class="container data-container">
-        <?php
-        // Use Composer autoloading
-        require 'vendor/autoload.php';
-        require 'config.php';
+    <?php
+    require 'vendor/autoload.php';
+    require 'config.php';
 
-        // Function to build SQL query based on admission number
-        function buildQueryByAdmissionNumber($admissionNumber)
-        {
-            $query = "SELECT * FROM payment_logs WHERE Admission_Number = '$admissionNumber'";
-            return $query;
-        }
+    function buildQuery($field, $value)
+    {
+        $query = "SELECT * FROM payment_logs WHERE $field = '$value'";
+        return $query;
+    }
 
-        // Check if admission number is submitted
-        if (isset($_POST['admissionNumber'])) {
-            $admissionNumber = $_POST['admissionNumber'];
+    function displayPaymentHistory($query)
+    {
+        $result = $conn->query($query);
 
-            $query = buildQueryByAdmissionNumber($admissionNumber);
-            $result = $conn->query($query);
+        if ($result && $result->num_rows > 0) {
+            echo '<table class="data-table">';
+            echo '<thead>';
+            echo '<tr>';
+            echo '<th>Date</th>';
+            echo '<th>Admission Number</th>';
+            echo '<th>Name</th>';
+            echo '<th>Fees_Type</th>';
+            echo '<th>Amount_paid</th>';
+            echo '<th>Date Of Payment</th>';
+            echo '<th>UTR_Number</th>';
+            // Add more columns as needed
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
 
-            if ($result && $result->num_rows > 0) {
-                echo '<table class="data-table">';
-                echo '<thead>';
+            while ($row = $result->fetch_assoc()) {
                 echo '<tr>';
-                echo '<th>Date</th>';
-                echo '<th>Admission Number</th>';
-                echo '<th>Name</th>';
-                echo '<th>Fees_Type</th>';
-                echo '<th>Amount_paid</th>';
-                echo '<th>UTR_Number</th>';
-                // Add more columns as needed
+                echo '<td>' . $row['Date'] . '</td>';
+                echo '<td>' . $row['Admission_Number'] . '</td>';
+                echo '<td>' . $row['Name'] . '</td>';
+                echo '<td>' . $row['Fees_Type'] . '</td>';
+                echo '<td>' . $row['Amount_paid'] . '</td>';
+                echo '<td>' . $row['Date_of_payment'] . '</td>';
+                echo '<td>' . $row['UTR_Number'] . '</td>';
                 echo '</tr>';
-                echo '</thead>';
-                echo '<tbody>';
-
-                while ($row = $result->fetch_assoc()) {
-                    echo '<tr>';
-                    echo '<td>' . $row['Date'] . '</td>';
-                    echo '<td>' . $row['Admission_Number'] . '</td>';
-                    echo '<td>' . $row['Name'] . '</td>';
-                    echo '<td>' . $row['Fees_Type'] . '</td>';
-                    echo '<td>' . $row['Amount_paid'] . '</td>';
-                    echo '<td>' . $row['UTR_Number'] . '</td>';
-                    echo '</tr>';
-                }
-
-                echo '</tbody>';
-                echo '</table>';
-            } else {
-                echo "No payment history found for the given admission number.";
             }
-        }
 
-        // Close the connection
-        $conn->close();
-        ?>
+            echo '</tbody>';
+            echo '</table>';
+        } else {
+            echo "No payment history found.";
+        }
+    }
+
+    if (isset($_POST['admissionNumber'])) {
+        $admissionNumber = $_POST['admissionNumber'];
+        $query = buildQuery('Admission_Number', $admissionNumber);
+        displayPaymentHistory($query);
+    }
+
+    if (isset($_POST['date'])) {
+        $date = $_POST['date'];
+        $query = buildQuery('Date_of_payment', $date);
+        displayPaymentHistory($query);
+    }
+
+    $conn->close();
+?>
+
     </div>
 
     <!-- Bootstrap JS and dependencies (Optional) -->

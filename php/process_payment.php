@@ -2,6 +2,7 @@
 // Assuming you have a database connection
 require 'config.php';
 
+
 // Check database connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -17,10 +18,11 @@ $name = $_POST['name'];
 $amount_paid = $_POST['amount_paid'];
 $utr_number = $_POST['utr_number'];
 $feetype = $_POST['fees_type'];
+$dateofpayment = $_POST['datepaid'];
 
 // SQL query to insert payment details into payment_logs table
-$sql_insert = "INSERT INTO payment_logs (Date, Admission_Number, Name, Fees_Type, Amount_paid, UTR_Number) VALUES
-               ('$date', '$admission_number','$name','$feetype','$amount_paid', '$utr_number')";
+$sql_insert = "INSERT INTO payment_logs (Date, Admission_Number, Name, Fees_Type, Amount_paid,  Date_of_payment , UTR_Number) VALUES
+               ('$date', '$admission_number','$name','$feetype','$amount_paid' , '$dateofpayment' , '$utr_number')";
 
 // SQL query to update the corresponding fee column in studentdetails table
 $sql_update = "UPDATE studentdetails 

@@ -58,9 +58,9 @@ foreach ($rows as $row) {
     echo "<td>{$row['Jvd/Non_Jvd']}</td>";
     echo "<td>{$row['Phone_Number']}</td>";
     echo "<td>{$row['CET_Qualified']}</td>";
-    echo "<td>{$row['Tuition_fee']}</td>";
+    echo "<td>{$row['Tution_fee']}</td>";
     echo "<td>{$row['Special_fee']}</td>";
-    echo "<td>{$row['Other_fee']}</td>";
+    echo "<td>{$row['UCS_fee']}</td>";
     echo "<td>{$row['Due_Amount']}</td>";
     echo "</tr>";
 

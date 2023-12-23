@@ -70,7 +70,7 @@
                     <a class="navbar-brand" href="#">Admin Panel</a>
                 </div>
                 <div class="navbar-right">
-                    <a href="./php/logout.php" class="btn btn-danger navbar-btn">Logout</a>
+                    <a href="php/logout.php" class="btn btn-danger navbar-btn">Logout</a>
                 </div>
             </div>
         </nav>
@@ -126,20 +126,32 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row" id="studentimg">
-                            <div class="row text-center"><img  style=" width: 90%;" src="images/fees.jpg" alt=""></div>
+                            <div class="row text-center"><img style="width: 90%;" src="images/fees.jpg" alt=""></div>
                         </div>
                         <div class="row">
                             <h2 class="card-title">Upload Fees Structure</h2>
                         </div>
                         <div class="row">
-                                <div class="form-group">
-                                    <div class="help-block">Please click upload the fees structure.</div>
-                                </div>
-                                <button data-toggle="modal" data-target="#feesModal" type="submit" name="submit" class="btn btn-primary">Upload</button>
+                            <div class="form-group">
+                                <div class="help-block">Please click to upload the fees structure.</div>
+                            </div>
+                            <div class="btn-grou dropup btn-block">
+                                <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Upload <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="form-control"><a data-toggle="modal" data-target="#adminFee" class="dropdown-item " href="#">Admission fee</a></li>
+                                    <li class="form-control"><a data-toggle="modal" data-target="#feesModal" class="dropdown-item " href="#">Fees Structure</a></li>
+                                    <li class="form-control"> <a   href="php/updateyear.php">Update Years</a></li>
+                                    
+                                    <!-- Add more dropdown items as needed -->
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
     <!-- Modal -->
@@ -229,6 +241,44 @@
               </div>
             </div>
         </div>    
+        <div class="modal fade" id="adminFee" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title text-center">Fees Structure</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./php/admin_fees.php" method="post">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="yearSelection">Select Year:</label>
+                                    <select id="yearSelection" name="yearSelection" class="form-control">
+                                        <option value="1"> 1 </option>
+                                        <option value="2"> 2 for Lateral Entries</option>
+                                    </select>
+                                    <div id="yearFees">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group">
+                                                            <label for="AdmissionFee">Admission Fee:</label>
+                                                            <input type="number" name="AdmissionFee" id="AdmissionFee" class="form-control" >
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" name="submitFees" class="btn btn-success form-control" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>   
         <div class="modal fade" id="feesModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -253,12 +303,6 @@
                                                 <div class="row">
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
-                                                            <label for="AdmissionFee">Admission Fee:</label>
-                                                            <input type="number" name="AdmissionFee" id="AdmissionFee" class="form-control" >
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="form-group">
                                                             <label for="TuitionFee">Tuition Fee:</label>
                                                             <input type="number" name="TuitionFee" id="TuitionFee" class="form-control" >
                                                         </div>
@@ -272,7 +316,7 @@
                                                     <div class="col-lg-12">
                                                         <div class="form-group">
                                                             <label for="UCSFees">UCS Fees:</label>
-                                                            <input type="number" name="UCSFees" id="1UCSFees" class="form-control">
+                                                            <input type="number" name="UCSFees" id="UCSFees" class="form-control">
                                                         </div>
                                                     </div>
                                                 </div> 
@@ -286,7 +330,9 @@
                     </div>
                 </div>
             </div>
-        </div>   
+        </div>
+        
+        
     <!-- Your Bootstrap 3 JavaScript and Custom Scripts -->
     <script>
         // Enable Bootstrap form validation
@@ -308,6 +354,7 @@
             var label = document.getElementById('file-label');
             label.innerHTML = input.files[0] ? 'Selected file: ' + input.files[0].name : '';
         }
+                                  
     </script>
 </body>
 </html>
