@@ -1,0 +1,8 @@
+DELIMITER //
+CREATE TRIGGER update_due_amoun
+BEFORE UPDATE ON studentdetails FOR EACH ROW
+BEGIN
+    SET NEW.Due_Amount = COALESCE(NEW.Tution_fee, 0) + COALESCE(NEW.Special_fee, 0) + COALESCE(NEW.UCS_fee, 0);
+END;
+//
+DELIMITER ;
