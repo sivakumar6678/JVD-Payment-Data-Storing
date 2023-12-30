@@ -7,6 +7,7 @@ window.addEventListener('load', function () {
   function simulateAsyncAction() {
     // Display the loading animation while the asynchronous action is in progress
     document.getElementById('load').style.display = 'flex';
+      
 
     // Simulate an asynchronous action with setTimeout
     setTimeout(function () {
