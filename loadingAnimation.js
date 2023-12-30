@@ -3,6 +3,7 @@ window.addEventListener('load', function () {
     document.getElementById('load').style.display = 'none';
   });
 
+
   // Simulate an asynchronous action (e.g., fetching data)
   function simulateAsyncAction() {
     // Display the loading animation while the asynchronous action is in progress
