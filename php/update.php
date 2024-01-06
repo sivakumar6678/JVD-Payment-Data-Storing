@@ -1,57 +1,63 @@
 <?php
-// Check if the form is submitted via POST method
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Create a new connection to the database
-    require 'config.php';
 
-    // Fetch the Admission Number from the form
-    $adi = $_POST['Admission_Number'];
-    echo "" . $adi; // Outputting the Admission Number
 
-    // Get the edited data from the form
-    $AdmissionNumber = $_POST['Admission_Number'];
-    $Name = $_POST['Name'];
-    $Year = $_POST['Year'];
-    $Branch = $_POST['Branch'];
-    $Scholarship = $_POST['Scholarship'];
-    $Phone_Number = $_POST['Phone_Number'];
-    $Tution_fee = $_POST['Tution_fee'];
-    $Special_fee = $_POST['Special_fee'];
-    $Other_fee = $_POST['Other_fee'];
-    $Accommodation = $_POST['Accommodation'];
-    $Email_Id = $_POST['Email_Id'];
-    $Cet_Qualified = $_POST['Cet_Qualified'];
+// updateuser.php
 
-    // Prepare SQL query for updating studentdetails table
-    $sql = "UPDATE `studentdetails` SET 
-            `Admission_Number`='$AdmissionNumber',
-            `Name`='$Name',
-            `Year`='$Year',
-            `Branch`='$Branch',
-            `Scholarship`='$Scholarship',
-            `Phone_Number`='$Phone_Number',
-            `Tution_fee`='$Tution_fee',
-            `Special_fee`='$Special_fee',
-            `Other_fee`='$Other_fee',
-            `Accommodation`='$Accommodation',
-            `Email_Id`='$Email_Id',
-            `Cet_Qualified`='$Cet_Qualified' 
-            WHERE Admission_Number='$AdmissionNumber'";
+// Include the database configuration file
+require 'config.php';
 
-    // Execute the SQL query
-    $u = mysqli_query($conn, $sql);
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Initialize an array to store user data
+    $userData = array();
 
-    // Check if the query executed successfully
-    if ($u === true) {
-        // Redirect to the admin_student.php page with a success message
-        $success_message = "Record Updated successfully";
-        header("Location: admin_student.php#?success_message=" . urlencode($success_message));
+    // Collect form data
+    foreach ($_POST as $key => $value) {
+        // Ensure the key is not empty and starts with a letter (to avoid potential security issues)
+        if (!empty($key)) {
+            // Sanitize and store the data
+            $userData[$key] = mysqli_real_escape_string($conn, $value);
+        }
+    }
+
+    // Check if there is any data to update
+    if (!empty($userData)) {
+        // Build the SQL query to update data in the database
+        $updateData = array();
+        foreach ($userData as $key => $value) {
+            $updateData[] = "`$key` = '$value'";
+        }
+        $updateValues = implode(', ', $updateData);
+
+        // Ensure that there is a valid 'id' value in the $userData array
+        if (isset($userData['ID'])) {
+            $query = "UPDATE `studentdetails` SET $updateValues WHERE `id` = {$userData['ID']}";
+
+            // Perform the query
+            $result = mysqli_query($conn, $query);
+
+            // Check if the query was successful
+            if ($result) {
+                // Redirect or display a success message
+                header("Location:admin_student.php?status=1");
+                echo "done";
+            } else {
+                echo "Error: " . mysqli_error($conn);
+                header("Location:admin_student.php?status=2");
+            }
+        } else {
+            echo "Error: No valid 'id' provided for the update.";
+        }
     } else {
-        // Output the error message if the query encountered an error
-        echo "error: " . mysqli_error($conn);
+        echo "Error: No data provided for the update.";
+        header("Location:admin_student.php?status=2");
     }
 
     // Close the database connection
     mysqli_close($conn);
+} else {
+    // Redirect to the form page if accessed directly without submitting the form
+     header("Location: viewStudent.php");
+    exit();
 }
 ?>
