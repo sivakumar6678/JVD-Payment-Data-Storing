@@ -143,6 +143,8 @@
 
     function displayPaymentHistory($query)
     {
+        require 'config.php';
+
         $result = $conn->query($query);
 
         if ($result && $result->num_rows > 0) {
