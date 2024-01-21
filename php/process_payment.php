@@ -18,6 +18,20 @@ if ($conn->connect_error) {
 date_default_timezone_set('Asia/Kolkata');
 $date = date("Y-m-d H:i:s"); // Current date
 
+// Function to map fee type to column name in studentdetails table
+function getColumnName($feetype) {
+    // Define the mapping of fee type to column name
+    $feeColumnMap = [
+        'Tution_Fees' => 'Tution_fee',
+        'Special_Fees' => 'Special_fee',
+        'UCS_Fees' => 'UCS_fee',
+        // Add more fee types as needed
+    ];
+
+    // Return the column name based on fee type
+    return $feeColumnMap[$feetype];
+}
+
 // Check if the Admission_Number exists in studentdetails
 $check_query = "SELECT COUNT(*) as count FROM studentdetails WHERE Admission_Number = '$admission_number'";
 $result = $conn->query($check_query);
@@ -36,20 +50,6 @@ if ($result && $result->num_rows > 0) {
         $sql_update = "UPDATE studentdetails 
                        SET " . getColumnName($feetype) . " = " . getColumnName($feetype) . " - $amount_paid
                        WHERE Admission_Number = '$admission_number'";
-
-        // Function to map fee type to column name in studentdetails table
-        function getColumnName($feetype) {
-            // Define the mapping of fee type to column name
-            $feeColumnMap = [
-                'Tution_Fees' => 'Tution_fee',
-                'Special_Fees' => 'Special_fee',
-                'UCS_Fees' => 'UCS_fee',
-                // Add more fee types as needed
-            ];
-
-            // Return the column name based on fee type
-            return $feeColumnMap[$feetype];
-        }
 
         // Execute both queries and handle success or failure
         if ($conn->query($sql_insert) === TRUE && $conn->query($sql_update) === TRUE) {
