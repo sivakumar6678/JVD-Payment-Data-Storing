@@ -39,18 +39,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Check if the query was successful
             if ($result) {
                 // Redirect or display a success message
-                header("Location:admin_student.php?status=1");
-                echo "done";
+                $msg = "Data Updated Successfully";
+                header("Location: admin_student.php#?msg=" . urlencode($msg));
+                // header("Location:admin_student.php?status=1");
             } else {
                 echo "Error: " . mysqli_error($conn);
-                header("Location:admin_student.php?status=2");
+                $error_msg = "Error";
+                header("Location: admin_student.php#?error_msg=" . urlencode($error_msg));
+                // header("Location:admin_student.php?status=2");
             }
         } else {
             echo "Error: No valid 'id' provided for the update.";
         }
     } else {
-        echo "Error: No data provided for the update.";
-        header("Location:admin_student.php?status=2");
+        $error_msg = "Error: No data provided for the update.";
+        header("Location: admin_student.php#?error_msg=" . urlencode($error_msg));
+        // header("Location:admin_student.php?status=2");
     }
 
     // Close the database connection

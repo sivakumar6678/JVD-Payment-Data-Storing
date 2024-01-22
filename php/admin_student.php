@@ -133,7 +133,10 @@
         }
 
         showMessage('success_message', 'green'); // Call function to display success message
-    }
+        showMessage('msg', 'green'); // Call function to display success message
+        showMessage('error_msg', 'red'); // Call function to display success message
+
+}
 </script>
 
 <!-- Body section of the HTML document -->
