@@ -26,21 +26,21 @@
         }
 
         .container {
-        background-color: #f5f5f5;
-        border-radius: 8px;
-        padding: 0;
-        overflow-x: auto; /* Add this line */
-    }
+                background-color: #f5f5f5;
+                border-radius: 8px;
+                padding: 0;
+                overflow-x: auto; /* Add this line */
+        }
 
-    .main {
-    margin-top: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    /* width: 100%; Set width to 100% */
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
-}
+        .main {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            /* width: 100%; Set width to 100% */
+            overflow-x: auto; /* Allow horizontal scrolling if needed */
+            margin-top: 20px;
+        }
 
         label {
             font-size: 16px;
