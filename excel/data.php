@@ -3,7 +3,7 @@
 $conn = mysqli_connect("localhost", "root", "", "paymentdetails");
 
 // Initialize query with no filters
-$query = "SELECT * FROM studentdetails WHERE 1";
+$query = "SELECT * FROM studentdetails WHERE Year in (1,2,3,4)";
 
 // Check if year filter is set
 if (!empty($_GET['year'])) {
