@@ -1,12 +1,15 @@
 # JVD Payment Data Storing System
-The JVD Payment Data Storing System is a web application designed to securely manage and store payment data for businesses. This system provides a reliable platform for storing transaction details, ensuring data integrity, and enabling easy retrieval of payment information for reporting and analysis.
+
+The JVD Payment Data Storing System is a comprehensive solution for managing student payment information within an educational institution. The application provides a secure platform for students to view their payment details, including transaction numbers, payment dates, amounts, and types of payments. Administrators can efficiently manage student data, assign fee structures, and track payments using a user-friendly interface.
 ## Features
-- **Secure Data Storage**: Encryption of sensitive payment data.
-- **Transaction Management**: Ability to add, view, edit, and delete payment records.
-- **User Authentication**: Secure login and access control for administrators.
-- **Data Validation**: Ensures accuracy and completeness of stored payment data.
-- **Responsive Design**: Optimized for both desktop and mobile devices.
-- **Search Functionality**: Quick search options to find specific transactions or payment records.
+- **Student Login:** Students can log in to view their payment details for each academic year.
+- **Payment Information:** Students can see transaction numbers, payment dates, amounts paid, and types of payments.
+- **Admin Login:** Administrators can manage student data, including adding or updating details through a CSV file.
+- **Fee Structure Management:** Admins can assign fee structures for new academic years and categorize payments into types like academic fees, special fees, etc.
+- **Payment Tracking:** Payment details can be viewed by student or date, categorized by payment type.
+- **Admin Management:** Option to add additional admins with appropriate permissions.
+- **Export and Download:** Student details can be exported and downloaded in Excel format with filters for easy analysis.
+- **Responsive Design:** The system is designed to be responsive and accessible on various devices.
 ## Technologies Used
 - **Frontend**:
   - HTML for creating the structure of the pages.
