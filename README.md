@@ -12,6 +12,7 @@ The JVD Payment Data Storing System is a web application designed to securely ma
   - HTML for creating the structure of the pages.
   - CSS for styling and responsive design.
   - JavaScript for client-side validation and interactivity.
+  - Bootstrap for Responsive website and more features.
 - **Backend**:
   - PHP for server-side scripting and data handling.
   - MySQL for database management.
